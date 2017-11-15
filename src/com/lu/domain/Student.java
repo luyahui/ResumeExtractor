@@ -1,7 +1,17 @@
 package com.lu.domain;
 
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
+@Entity
+@Table(name = "student")
 public class Student {
 	private long id;
 	private String name;
@@ -11,6 +21,8 @@ public class Student {
 	private List<Education> educations;
 	private List<Experience> experiences;
 
+	@Id
+	@GeneratedValue
 	public long getId() {
 		return id;
 	}
@@ -19,6 +31,7 @@ public class Student {
 		this.id = id;
 	}
 
+	@Column(name = "name")
 	public String getName() {
 		return name;
 	}
@@ -27,6 +40,7 @@ public class Student {
 		this.name = name;
 	}
 
+	@Column(name = "phone")
 	public String getPhone() {
 		return phone;
 	}
@@ -35,6 +49,7 @@ public class Student {
 		this.phone = phone;
 	}
 
+	@Column(name = "email")
 	public String getEmail() {
 		return email;
 	}
@@ -43,6 +58,7 @@ public class Student {
 		this.email = email;
 	}
 
+	@Column(name = "address")
 	public String getAddress() {
 		return address;
 	}
@@ -51,6 +67,8 @@ public class Student {
 		this.address = address;
 	}
 
+	@OneToMany(mappedBy = "student")
+	@LazyCollection(LazyCollectionOption.EXTRA)
 	public List<Education> getEducations() {
 		return educations;
 	}
@@ -59,6 +77,8 @@ public class Student {
 		this.educations = educations;
 	}
 
+	@OneToMany(mappedBy = "student")
+	@LazyCollection(LazyCollectionOption.EXTRA)
 	public List<Experience> getExperiences() {
 		return experiences;
 	}

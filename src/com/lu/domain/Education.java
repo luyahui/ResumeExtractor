@@ -1,7 +1,16 @@
 package com.lu.domain;
 
 import java.sql.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="education")
 public class Education {
 	private long id;
 	private Student student;
@@ -12,6 +21,8 @@ public class Education {
 	private Date start_date;
 	private Date end_date;
 
+	@Id
+	@GeneratedValue
 	public long getId() {
 		return id;
 	}
@@ -20,6 +31,8 @@ public class Education {
 		this.id = id;
 	}
 
+	@ManyToOne
+	@JoinColumn(name="sid")
 	public Student getStudent() {
 		return student;
 	}
@@ -28,6 +41,7 @@ public class Education {
 		this.student = student;
 	}
 
+	@Column(name="college")
 	public String getCollege() {
 		return college;
 	}
@@ -36,6 +50,7 @@ public class Education {
 		this.college = college;
 	}
 
+	@Column(name="degree")
 	public String getDegree() {
 		return degree;
 	}
@@ -44,6 +59,7 @@ public class Education {
 		this.degree = degree;
 	}
 
+	@Column(name="major")
 	public String getMajor() {
 		return major;
 	}
@@ -52,6 +68,7 @@ public class Education {
 		this.major = major;
 	}
 
+	@Column(name="minor")
 	public String getMinor() {
 		return minor;
 	}
@@ -60,6 +77,7 @@ public class Education {
 		this.minor = minor;
 	}
 
+	@Column(name="start_date")
 	public Date getStart_date() {
 		return start_date;
 	}
@@ -68,6 +86,7 @@ public class Education {
 		this.start_date = start_date;
 	}
 
+	@Column(name="end_date")
 	public Date getEnd_date() {
 		return end_date;
 	}

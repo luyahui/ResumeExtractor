@@ -1,8 +1,16 @@
 package com.lu.domain;
 
 import java.sql.Date;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="experience")
 public class Experience {
 	private long id;
 	private Student student;
@@ -11,8 +19,10 @@ public class Experience {
 	private Date start_date;
 	private Date end_date;
 	private String title;
-	private List<String> achievements;
+	private String achievements;
 
+	@Id
+	@GeneratedValue
 	public long getId() {
 		return id;
 	}
@@ -21,6 +31,8 @@ public class Experience {
 		this.id = id;
 	}
 
+	@ManyToOne
+	@JoinColumn(name="sid")
 	public Student getStudent() {
 		return student;
 	}
@@ -29,6 +41,7 @@ public class Experience {
 		this.student = student;
 	}
 
+	@Column(name="employer")
 	public String getEmployer() {
 		return employer;
 	}
@@ -37,6 +50,7 @@ public class Experience {
 		this.employer = employer;
 	}
 
+	@Column(name="address")
 	public String getAddress() {
 		return address;
 	}
@@ -45,6 +59,7 @@ public class Experience {
 		this.address = address;
 	}
 
+	@Column(name="start_date")
 	public Date getStart_date() {
 		return start_date;
 	}
@@ -53,6 +68,7 @@ public class Experience {
 		this.start_date = start_date;
 	}
 
+	@Column(name="end_date")
 	public Date getEnd_date() {
 		return end_date;
 	}
@@ -61,6 +77,7 @@ public class Experience {
 		this.end_date = end_date;
 	}
 
+	@Column(name="title")
 	public String getTitle() {
 		return title;
 	}
@@ -69,11 +86,12 @@ public class Experience {
 		this.title = title;
 	}
 
-	public List<String> getAchievements() {
+	@Column(name="achievements")
+	public String getAchievements() {
 		return achievements;
 	}
 
-	public void setAchievements(List<String> achievements) {
+	public void setAchievements(String achievements) {
 		this.achievements = achievements;
 	}
 
