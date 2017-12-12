@@ -12,6 +12,7 @@ public class RegexTool {
 
 	/**
 	 * Search the address information in the text
+	 * 
 	 * @param text
 	 * @return
 	 */
@@ -32,6 +33,7 @@ public class RegexTool {
 
 	/**
 	 * Search the email information in the text
+	 * 
 	 * @param text
 	 * @return
 	 */
@@ -49,6 +51,7 @@ public class RegexTool {
 
 	/**
 	 * Search the phone number in the text
+	 * 
 	 * @param text
 	 * @return
 	 */
@@ -66,5 +69,111 @@ public class RegexTool {
 		}
 		return phone;
 	}
-	
+
+	/**
+	 * Search the university name in the text
+	 */
+	public static String searchUniversity(String text) {
+		String university = null;
+		String[] patterns = {
+				"([A-Z][^\\s,.]+[.]?\\s[(]?)*(College|University|Institute|Law School|School of|Academy)[^,\\d]*(?=,|\\d)" };
+
+		for (String pattern : patterns) {
+			Pattern r = Pattern.compile(pattern);
+			Matcher m = r.matcher(text);
+			if (m.find()) {
+				university = m.group();
+				break;
+			}
+		}
+		return university;
+	}
+
+	/**
+	 * Search the major in the text
+	 */
+	public static String searchMajor(String text) {
+		String major = null;
+		if (text.toLowerCase().contains("business intelligence and analytics")) {
+			major = "Business Intelligence and Analytics";
+			return major;
+		}
+		if (text.toLowerCase().contains("chemical engineering")) {
+			major = "Chemical Engineering";
+			return major;
+		}
+		if (text.toLowerCase().contains("chemistry")) {
+			major = "Chemistry";
+			return major;
+		}
+		if (text.toLowerCase().contains("civil engineering")) {
+			major = "Civil Engineering";
+			return major;
+		}
+		if (text.toLowerCase().contains("computer engineering")) {
+			major = "Computer Engineering";
+			return major;
+		}
+		if (text.toLowerCase().contains("computer science")) {
+			major = "Computer Science";
+			return major;
+		}
+		if (text.toLowerCase().contains("construction management")) {
+			major = "Construction Management";
+			return major;
+		}
+		if (text.toLowerCase().contains("electrical engineering")) {
+			major = "Electrical Engineering";
+			return major;
+		}
+		if (text.toLowerCase().contains("engineering management")) {
+			major = "Engineering Management";
+			return major;
+		}
+		if (text.toLowerCase().contains("enterprise systems")) {
+			major = "Enterprise Systems";
+			return major;
+		}
+		if (text.toLowerCase().contains("financial engineering")) {
+			major = "Financial Engineering";
+			return major;
+		}
+		if (text.toLowerCase().contains("finance")) {
+			major = "Finance";
+			return major;
+		}
+		if (text.toLowerCase().contains("information systems")) {
+			major = "Information Systems";
+			return major;
+		}
+		if (text.toLowerCase().contains("management")) {
+			major = "Management";
+			return major;
+		}
+		if (text.toLowerCase().contains("materials engineering")) {
+			major = "Materials Engineering";
+			return major;
+		}
+		if (text.toLowerCase().contains("mathematics")) {
+			major = "Mathematics";
+			return major;
+		}
+		if (text.toLowerCase().contains("mechanical engineering")) {
+			major = "Mechanical Engineering";
+			return major;
+		}
+		if (text.toLowerCase().contains("ocean engineering")) {
+			major = "Ocean Engineering";
+			return major;
+		}
+		if (text.toLowerCase().contains("software engineering")) {
+			major = "Software Engineering";
+			return major;
+		}
+		if (text.toLowerCase().contains("systems engineering")) {
+			major = "Systems Engineering";
+			return major;
+		}
+		return major;
+	}
 }

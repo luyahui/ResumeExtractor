@@ -88,7 +88,7 @@ public class BaseDao<T> extends HibernateDaoSupport {
 	}
 
 	public List<T> find(String hql, List<Object> param, Integer page, Integer rows) {
-		return find(hql, param, page, rows);
+		return find(hql, param.toArray(), page, rows);
 	}
 
 	public T get(Class<T> c, Serializable id) {

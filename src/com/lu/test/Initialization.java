@@ -35,11 +35,12 @@ public class Initialization {
 	}
 
 	@Test
-	public void testPdf(){
-		String filePath = "/Users/javie/Downloads/Resume/Yahui Lu Resume (Executive1).docx";
-		new ResumeExtractor(filePath).extract();
+	public void testPdf() {
+		String filePath = "/Users/javie/Downloads/Yahui Lu Resume.docx";
+//		studentService.save(new ResumeExtractor(filePath).extract());
+		Student student = new ResumeExtractor(filePath).extract();
 	}
-	
+
 	@After
 	public void destroy() {
 

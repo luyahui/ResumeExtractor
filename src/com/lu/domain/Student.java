@@ -18,8 +18,8 @@ public class Student {
 	private String phone;
 	private String email;
 	private String address;
-	private List<Education> educations;
-	private List<Experience> experiences;
+	private String education;
+	private String major;
 
 	@Id
 	@GeneratedValue
@@ -67,24 +67,22 @@ public class Student {
 		this.address = address;
 	}
 
-	@OneToMany(mappedBy = "student")
-	@LazyCollection(LazyCollectionOption.EXTRA)
-	public List<Education> getEducations() {
-		return educations;
+	@Column(name = "education")
+	public String getEducation() {
+		return education;
 	}
 
-	public void setEducations(List<Education> educations) {
-		this.educations = educations;
+	public void setEducation(String education) {
+		this.education = education;
 	}
 
-	@OneToMany(mappedBy = "student")
-	@LazyCollection(LazyCollectionOption.EXTRA)
-	public List<Experience> getExperiences() {
-		return experiences;
+	@Column(name = "major")
+	public String getMajor() {
+		return major;
 	}
 
-	public void setExperiences(List<Experience> experiences) {
-		this.experiences = experiences;
+	public void setMajor(String major) {
+		this.major = major;
 	}
 
 }
