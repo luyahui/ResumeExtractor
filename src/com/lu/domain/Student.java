@@ -1,14 +1,10 @@
 package com.lu.domain;
 
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "student")
@@ -20,6 +16,7 @@ public class Student {
 	private String address;
 	private String education;
 	private String major;
+	private String notes;
 
 	@Id
 	@GeneratedValue
@@ -85,4 +82,13 @@ public class Student {
 		this.major = major;
 	}
 
+	@Column(name = "notes")
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+	
 }

@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.vfs2.FileName;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
@@ -22,6 +21,7 @@ import com.lu.util.ResumeExtractor;
 
 @Controller
 public class FileAction extends BaseAction {
+	private static final long serialVersionUID = 1L;
 
 	@Autowired
 	private StudentService studentService;
@@ -31,7 +31,8 @@ public class FileAction extends BaseAction {
 	private String uploadfileContentType;
 
 	@Action(value = "upload", interceptorRefs = {
-			@InterceptorRef(value = "fileUpload", params = { "allowedTypes", "application/msword, application/pdf" }),
+			@InterceptorRef(value = "fileUpload", params = { "allowedTypes",
+					"application/msword, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document" }),
 			@InterceptorRef("defaultStack") }, results = {
 					@Result(name = "success", location = "/index", type = "redirect"),
 					@Result(name = "input", location = "/index", type = "redirect") })
