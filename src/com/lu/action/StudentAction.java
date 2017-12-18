@@ -20,6 +20,7 @@ import com.lu.util.Page;
 @Controller
 public class StudentAction extends BaseAction {
 
+	private static final long serialVersionUID = 1L;
 	private Page page = new Page();
 	private String keyword;
 	private List<Student> students;
@@ -30,11 +31,18 @@ public class StudentAction extends BaseAction {
 
 	@Action(value = "index", results = { @Result(name = "index", location = "/default.jsp") })
 	public String index() {
-		String hql = "from Student";
-		int totalCount = new Integer(studentService.count("select count(*) " + hql).toString());
-		page.setTotalCount(totalCount);
+		if ((keyword == null) || keyword == "") {
+			String hql = "from Student";
+			int totalCount = new Integer(studentService.count("select count(*) " + hql).toString());
+			page.setTotalCount(totalCount);
 
-		students = studentService.find(hql, new ArrayList<>(), page.getPageNo(), page.getPageSize());
+			students = studentService.find(hql, new ArrayList<>(), page.getPageNo(), page.getPageSize());
+		}
+		
+		else{
+			
+		}
+		
 		requestMap.put("students", students);
 
 		return "index";
