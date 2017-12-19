@@ -8,6 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "student")
+
 public class Student {
 	private long id;
 	private String name;
@@ -17,6 +18,7 @@ public class Student {
 	private String education;
 	private String major;
 	private String notes;
+	private String filepath;
 
 	@Id
 	@GeneratedValue
@@ -90,5 +92,14 @@ public class Student {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	
+
+	@Column(name = "filepath")
+	public String getFilepath() {
+		return filepath;
+	}
+
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
+	}
+
 }

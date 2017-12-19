@@ -76,6 +76,11 @@
 	<div class="page-content">
 		<div class="page-header">
 			<h1>Profile</h1>
+			<h4>
+				<a href="<s:property
+						value="%{#attr.student.filepath}" />"
+					target="_blank">View original file </a>
+			</h4>
 		</div>
 		<div class="row">
 			<div class="col-xs-12">

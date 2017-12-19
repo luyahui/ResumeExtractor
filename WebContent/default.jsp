@@ -81,12 +81,16 @@
 									<s:submit value="import"></s:submit>
 								</s:form>
 								&nbsp;&nbsp;
-								<div class="table-header">Students table</div>
+								<div class="table-header">
+									<s:if test="keyword==null || keyword==''">Students table</s:if>
+									<s:else>Results for "<s:property value="keyword" />"</s:else>
+								</div>
 								<div class="nav-search" id="nav-search">
-									<form class="form-search">
+									<form class="form-search" action="index" method="get">
 										<span class="input-icon"> <input type="text"
-											placeholder="Search ..." class="nav-search-input"
-											id="nav-search-input" autocomplete="off"> <i
+											name="keyword" placeholder="Search ..."
+											class="nav-search-input" id="nav-search-input"
+											autocomplete="off"> <i
 											class="icon-search nav-search-icon"></i>
 										</span>
 										<div class="space-4"></div>
@@ -136,9 +140,15 @@
 										<div class="col-sm-6">
 											<div class="dataTables_paginate paging_bootstrap">
 												<ul class="pagination">
-													<li class="prev"><a
-														href="index?page.pageNo=<s:property value="%{#attr.page.pageNo-1}"/>"><i
-															class="icon-double-angle-left"></i></a></li>
+													<li class="prev"><s:if
+															test="keyword==null || keyword==''">
+															<a
+																href="index?page.pageNo=<s:property value="%{#attr.page.pageNo-1}"/>"><i
+																class="icon-double-angle-left"></i></a>
+														</s:if>
+														<s:else><a
+																href="index?keyword=<s:property value="keyword"/>&page.pageNo=<s:property value="%{#attr.page.pageNo-1}"/>"><i
+																class="icon-double-angle-left"></i></a></s:else></li>
 													<li><span>Showing <s:property
 																value="%{#attr.page.pageNo}" />/<s:property
 																value="%{#attr.page.pageCount}" /> page
@@ -146,9 +156,15 @@
 														value=<s:property value="%{#attr.page.pageNo}"/> /> <input
 														type="hidden" id="pageCount"
 														value=<s:property value="%{#attr.page.pageCount}"/> /></li>
-													<li class="next"><a
-														href="index?page.pageNo=<s:property value="%{#attr.page.pageNo+1}"/>"><i
-															class="icon-double-angle-right"></i></a></li>
+													<li class="next"><s:if
+															test="keyword==null || keyword==''">
+															<a
+																href="index?page.pageNo=<s:property value="%{#attr.page.pageNo+1}"/>"><i
+																class="icon-double-angle-right"></i></a>
+														</s:if>
+														<s:else><a
+																href="index?keyword=<s:property value="keyword"/>&page.pageNo=<s:property value="%{#attr.page.pageNo+1}"/>"><i
+																class="icon-double-angle-right"></i></a></s:else></li>
 												</ul>
 											</div>
 										</div>
@@ -167,11 +183,11 @@
 			pageCount = document.getElementById('pageCount').value;
 			if (pageNo === '1') {
 				document.getElementsByClassName('prev')[0].className += ' disabled';
-				document.getElementsByClassName('prev')[0].childNodes[0].href = 'javascript:void(0);';
+				document.getElementsByClassName('prev')[0].getElementsByTagName('a')[0].href = 'javascript:void(0);';
 			}
 			if (pageNo === pageCount) {
 				document.getElementsByClassName('next')[0].className += ' disabled';
-				document.getElementsByClassName('next')[0].childNodes[0].href = 'javascript:void(0);';
+				document.getElementsByClassName('next')[0].getElementsByTagName('a')[0].href = 'javascript:void(0);';
 			}
 		}
 	</script>

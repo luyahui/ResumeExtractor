@@ -1,5 +1,8 @@
 package com.lu.test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,6 +42,17 @@ public class Initialization {
 		String filePath = "/Users/javie/Downloads/Yahui Lu Resume.docx";
 //		studentService.save(new ResumeExtractor(filePath).extract());
 		Student student = new ResumeExtractor(filePath).extract();
+	}
+	
+	@Test
+	public void testSearch() {
+		// TODO Auto-generated method stub
+		String hql = "from Student where (name like '%yahui%')";
+//		List<Object> param = new ArrayList<>();
+//		param.add("%Yahui%");
+		List<Student> students = studentService.find(hql);
+//		System.out.println(students.size());
+		System.out.println(studentService.count("select count(*) " + hql));
 	}
 
 	@After

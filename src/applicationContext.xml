@@ -29,7 +29,7 @@
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
-		<property name="packagesToScan"  value="com.lu.domain" />
+		<property name="packagesToScan" value="com.lu.domain" />
 	</bean>
 
 	<!-- configure transaction manager -->
@@ -40,7 +40,7 @@
 
 	<!-- open transaction annotation-driven -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
-	
+
 	<!-- auto wired bean -->
 	<context:annotation-config></context:annotation-config>
 	<context:component-scan base-package="com.lu"></context:component-scan>

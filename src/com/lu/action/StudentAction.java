@@ -31,19 +31,21 @@ public class StudentAction extends BaseAction {
 
 	@Action(value = "index", results = { @Result(name = "index", location = "/default.jsp") })
 	public String index() {
+		String hql = "";
+		// List<Object> param = new ArrayList<>();
 		if ((keyword == null) || keyword == "") {
-			String hql = "from Student";
-			int totalCount = new Integer(studentService.count("select count(*) " + hql).toString());
-			page.setTotalCount(totalCount);
+			hql = "from Student";
+		}
 
-			students = studentService.find(hql, new ArrayList<>(), page.getPageNo(), page.getPageSize());
+		else {
+			hql = "from Student where (name like '%" + keyword + "%') or (phone like '%" + keyword
+					+ "%') or (email like '%" + keyword + "%') or (education like '%" + keyword
+					+ "%')  or (major like '%" + keyword + "%')  or (notes like '%" + keyword + "%')";
 		}
-		
-		else{
-			
-		}
-		
-		requestMap.put("students", students);
+
+		int totalCount = new Integer(studentService.count("select count(*) " + hql).toString());
+		page.setTotalCount(totalCount);
+		students = studentService.find(hql, new ArrayList<>(), page.getPageNo(), page.getPageSize());
 
 		return "index";
 	}

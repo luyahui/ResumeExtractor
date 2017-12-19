@@ -13,6 +13,7 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.lu.domain.Student;
 import com.lu.service.StudentService;
 import com.lu.util.ResumeExtractor;
 
@@ -48,7 +49,11 @@ public class FileAction extends BaseAction {
 				savefile.getParentFile().mkdirs();
 			try {
 				FileUtils.copyFile(uploadfile, savefile);
-				studentService.save(new ResumeExtractor(savefile.getAbsolutePath()).extract());
+				Student student = new ResumeExtractor(savefile.getAbsolutePath()).extract();
+				student.setFilepath("resumes/" + uploadfileFileName);
+				studentService.save(student);
+				// studentService.save(new
+				// ResumeExtractor(savefile.getAbsolutePath()).extract());
 				return "success";
 			} catch (IOException e) {
 				e.printStackTrace();
