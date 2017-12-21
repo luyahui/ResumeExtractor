@@ -77,8 +77,7 @@
 		<div class="page-header">
 			<h1>Profile</h1>
 			<h4>
-				<a href="<s:property
-						value="%{#attr.student.filepath}" />"
+				<a href="<s:property value="%{#attr.student.filepath}" />"
 					target="_blank">View original file </a>
 			</h4>
 		</div>
